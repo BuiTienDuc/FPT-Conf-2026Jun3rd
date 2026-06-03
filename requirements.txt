@@ -1,0 +1,7 @@
+streamlit
+gspread
+google-auth
+pytz
+qrcode
+pillow
+requests
