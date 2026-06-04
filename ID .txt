@@ -77,3 +77,79 @@ function doPost(e) {
       .setMimeType(ContentService.MimeType.JSON);
   }
 }
+
+
+Add new script
+
+const SHEET_NAME = "Điểm danh";
+
+function doGet(e) {
+  return ContentService
+    .createTextOutput(JSON.stringify({
+      status: "ok",
+      message: "Apps Script is running"
+    }))
+    .setMimeType(ContentService.MimeType.JSON);
+}
+
+function doPost(e) {
+  try {
+    const sheet = SpreadsheetApp
+      .getActiveSpreadsheet()
+      .getSheetByName(SHEET_NAME);
+
+    const data = JSON.parse(e.postData.contents);
+
+    const email = data.email.toLowerCase().trim();
+    const phone = data.phone.trim();
+    const studentId = String(data.student_id || "").trim();
+
+    const lastRow = sheet.getLastRow();
+    let values = [];
+
+    if (lastRow >= 4) {
+      values = sheet.getRange(4, 1, lastRow - 3, 6).getValues();
+    }
+
+    for (let i = 0; i < values.length; i++) {
+      const oldStudentId = String(values[i][2]).trim();
+      const oldEmail = String(values[i][3]).toLowerCase().trim();
+      const oldPhone = String(values[i][4]).trim();
+
+      if (oldStudentId === studentId || oldEmail === email || oldPhone === phone) {
+        return ContentService
+          .createTextOutput(JSON.stringify({
+            status: "duplicate",
+            message: "Bạn đã check-in trước đó"
+          }))
+          .setMimeType(ContentService.MimeType.JSON);
+      }
+    }
+
+    let nextRow = Math.max(lastRow + 1, 4);
+
+    sheet.getRange(nextRow, 1, 1, 6).setValues([[
+      data.time,
+      data.full_name,
+      studentId,
+      data.email,
+      data.phone,
+      data.year
+    ]]);
+
+    return ContentService
+      .createTextOutput(JSON.stringify({
+        status: "success",
+        message: "Check-in thành công"
+      }))
+      .setMimeType(ContentService.MimeType.JSON);
+
+  } catch (error) {
+    return ContentService
+      .createTextOutput(JSON.stringify({
+        status: "error",
+        message: error.toString()
+      }))
+      .setMimeType(ContentService.MimeType.JSON);
+  }
+}
