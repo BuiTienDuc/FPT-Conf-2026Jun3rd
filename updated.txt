@@ -1,0 +1,41 @@
+
+fpt-conf-2026jun3rd
+đã có thư mục .git rồi, giờ chỉ cần cập nhật code mới lên GitHub thôi.
+
+Mở CMD tại thư mục này rồi chạy:
+
+git add .
+git commit -m "Update project files"
+git push
+
+Nếu hiện:
+
+Everything up-to-date
+
+thì nghĩa là chưa có thay đổi mới.
+
+Nếu push thành công sẽ hiện kiểu:
+
+Enumerating objects...
+Writing objects...
+To https://github.com/BuiTienDuc/FPT-Conf-2026Jun3rd.git
+
+////////////////
+
+Tạo Apps Script bằng Gmail cá nhân
+
+Nên dùng Gmail cá nhân để tạo lại Apps Script.
+Sau đó trong Google Sheet hiện tại,  chia sẻ quyền Editor cho Gmail cá nhân.
+
+Làm lại:
+
+Google Sheet → Chia sẻ → thêm Gmail cá nhân → Editor
+
+Rồi đăng nhập Gmail cá nhân → mở Sheet → Apps Script → dán code → Deploy:
+
+Thực thi với tư cách: Tôi
+Người có quyền truy cập: Bất kỳ ai
+
+Sau đó copy URL mới dán vào:
+
+WEB_APP_URL = "URL_MOI"

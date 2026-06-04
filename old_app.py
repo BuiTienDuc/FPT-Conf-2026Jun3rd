@@ -126,12 +126,6 @@ def valid_phone(phone):
 
 with st.form("checkin_form", clear_on_submit=False):
     full_name = st.text_input("Họ tên", placeholder="Ví dụ: Nguyễn Văn A")
-
-    student_id = st.text_input(
-        "Mã số sinh viên",
-        placeholder="Ví dụ: N23DCCN001 hoặc 2211565"
-    )
-
     email = st.text_input("Email", placeholder="Ví dụ: nguyenvana@gmail.com")
     phone = st.text_input("Số điện thoại", placeholder="Ví dụ: 0901234567")
     year = st.selectbox(
@@ -143,13 +137,12 @@ with st.form("checkin_form", clear_on_submit=False):
 
 if submitted:
     full_name = full_name.strip()
-    student_id = student_id.strip()
     email = email.strip()
     phone = phone.strip().replace(" ", "")
 
     if WEB_APP_URL == "DAN_LINK_APPS_SCRIPT_CUA_ANH_VAO_DAY":
         st.error("Anh chưa dán link Apps Script vào biến WEB_APP_URL.")
-    elif not full_name or not student_id or not email or not phone or year == "Chọn năm học":
+    elif not full_name or not email or not phone or year == "Chọn năm học":
         st.error("Vui lòng nhập đầy đủ thông tin.")
     elif not valid_email(email):
         st.error("Email chưa hợp lệ.")
@@ -162,7 +155,6 @@ if submitted:
         payload = {
             "time": checkin_time,
             "full_name": full_name,
-            "student_id": student_id,
             "email": email,
             "phone": phone,
             "year": year
