@@ -20,6 +20,16 @@ Enumerating objects...
 Writing objects...
 To https://github.com/BuiTienDuc/FPT-Conf-2026Jun3rd.git
 
+
+muốn lấy code local đè lên GitHub, dùng:
+
+git push origin main --force
+
+Nhưng nên ưu tiên cách an toàn trước:
+
+git pull --rebase origin main
+git push origin main
+
 ////////////////
 
 Tạo Apps Script bằng Gmail cá nhân
