@@ -111,10 +111,20 @@ label {
 </style>
 """, unsafe_allow_html=True)
 
+# st.markdown("""
+# <div class="checkin-card">
+#     <div class="main-title">CHECK-IN<br>HỘI THẢO FPT 10/06/2026</div>
+#     <div class="sub-title">Sinh viên vui lòng nhập thông tin để điểm danh</div>
+# </div>
+# """, unsafe_allow_html=True)
+
 st.markdown("""
 <div class="checkin-card">
-    <div class="main-title">CHECK-IN<br>HỘI THẢO FPT 10/06/2026</div>
-    <div class="sub-title">Sinh viên vui lòng nhập thông tin để điểm danh</div>
+<div class="main-title">CHECK-IN<br>HỘI THẢO FPT 10/06/2026</div>
+<div class="sub-title">Sinh viên vui lòng nhập thông tin để điểm danh</div>
+<div style="text-align:center;color:#d60000;font-size:15px;font-weight:600;margin-top:-10px;margin-bottom:5px;">
+📢 Thông tin CHECK-IN sẽ được chia sẻ với Doanh nghiệp Tuyển dụng
+</div>
 </div>
 """, unsafe_allow_html=True)
 
